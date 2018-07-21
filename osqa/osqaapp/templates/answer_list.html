@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>answers</title>
+</head>
+<body>
+<div class="container">
+            <div>
+            <a href="/osqa/questions"><i class="fa fa-home" style="font-size:24px"></i></a>
+            <a href="/osqa/logout" style="float: right;"><span class="glyphicon glyphicon-log-out"></span></a>
+        </div>
+
+    <table class="table">
+        {% for j in question %}
+           <tr class="success">
+             <td >
+              {{  j.question}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table class="table">
+        <tr class="danger">
+            <td>
+                id
+            </td>
+            <td>
+                created
+            </td>
+            <td>
+                answer
+            </td>
+            <td>
+                user
+            </td>
+            <td>
+                likes
+            </td>
+            <td>
+               comments
+            </td>
+        </tr>
+        {% for i in answers %}
+        <tr class="info">
+              <td>
+                  <a>{{ i.id }}</a>
+            </td>
+            <td>
+              {{  i.created }}
+            </td>
+            <td>
+                {{i.answer}}
+            </td>
+            <td>
+               <i class="fa fa-user-secret" style="font-size:24px"></i>{{ i.user_id }}
+            </td>
+            <td>
+                <a href="/osqa/ALike/{{i.id}}"><i class="fa fa-thumbs-up" style="font-size:24px"></i></a>{{ i.likes }}
+            </td>
+            <td>
+                <a href="/osqa/questions/{{i.id}}/comments/{{i.id}}"><i class="fa fa-comments" style="font-size:24px"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div>
+               <a href="/osqa/questions/{{id}}/addanswers">add answers</a>
+    <a href="{{request.META.HTTP_REFERER|escape}}" style="float: right;"><span class="glyphicon glyphicon-backward"></span>Back</a>
+    </div>
+    </div>
+</body>
+</html>

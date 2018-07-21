@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Questions</title>
+</head>
+<body>
+<div class="container">
+        <div>
+            <a href="/osqa/questions"><i class="fa fa-home" style="font-size:24px"></i></a>
+            <a href="/osqa/logout" style="float: right;"><span class="glyphicon glyphicon-log-out"></span></a>
+        </div>
+
+        <div style="background-color: #bfff80;">
+            <h3 class="text-center">QUESTIONS </h3>
+        </div>
+    </br></br>
+    <table class="table">
+        <tr style="background-color:  #ffb3db;">
+            <td>
+                id
+            </td>
+            <td>
+                name
+            </td>
+            <td>
+                created
+            </td>
+            <td>
+                question
+            </td>
+            <td>
+                user
+            </td>
+            <td>
+                click here for answers
+            </td>
+            <td>
+                likes
+            </td>
+            <td>
+                click here for comments
+            </td>
+        </tr>
+        {% for i in Questions %}
+        <tr class="info">
+              <td>
+                  {{ i.id }}
+            </td>
+            <td>
+               {{ i.Qname }}
+            </td>
+            <td>
+              {{  i.created }}
+            </td>
+            <td>
+                {{i.question}}
+            </td>
+            <td>
+               <i class="fa fa-user" style="font-size:24px"></i>{{ i.user_id }}
+            </td>
+            <td>
+               <a href="/osqa/questions/{{i.id}}">answers</a>
+            </td>
+            <td>
+               <a href="/osqa/QLike/{{i.id}}"><i class="fa fa-thumbs-up" style="font-size:24px"></i></a>{{ i.likes }}
+            </td>
+            <td>
+                <a href="/osqa/questions/{{i.id}}/comments"><i class="fa fa-comments" style="font-size:24px"></i></a>
+            </td>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div style="text-align:center">
+     <a href="/osqa/addquestion">click here to add questions</a>
+    </div>​
+    </br></br>
+    <div style="text-align:center">
+     <a href="/osqa/userquestion">click here to view your contributions</a>
+    </div>​
+    </div>
+</body>
+</html>
