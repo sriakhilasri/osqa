@@ -1,2 +1,3 @@
 # osqa
-this is a simple osqa app
+
+open source question and answers system
